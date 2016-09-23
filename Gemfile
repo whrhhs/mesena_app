@@ -6,7 +6,7 @@ gem 'rails', '4.0.4'
 
 # Use mysql as the database for Active Record
 group :development do
-  gem 'mysql2','~> 0.3.20'
+  gem 'mysql2','>= 0.3.13', '< 0.5'
 end
 
 # Use SCSS for stylesheets

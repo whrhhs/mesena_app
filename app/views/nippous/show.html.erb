@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @nippou.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @nippou.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_nippou_path(@nippou) %> |
+<%= link_to 'Back', nippous_path %>
