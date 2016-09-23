@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-MesenaApp::Application.config.secret_key_base = '96b539af39287a3ce2536ea9b9fb846c495846ea6bca048394132d8da0a68db47d6748e7c089c4a10108bd0a6b9a4e8bdfa790d4f8b9d4e18f4fcee489f3919e'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+MesenaApp::Application.config.secret_key_base = secure_token
